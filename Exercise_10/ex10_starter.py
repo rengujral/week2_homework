@@ -10,22 +10,28 @@ else:
     hdir = os.environ['HOME']
 
 # or use this if you already know your operating system
-# var = os.environ['HOME']
 # print home directory name
-print(f"Your home directory is:", hdir)
+print("Your home directory is:", hdir)
 
 # Construct a portable wildcard pattern to match ALL files in the home directory
-# find out why we use the asterisk (the code doesn't work without it)
 pattern = os.path.join(hdir, "*")
 
 # glob.glob is used to find all the files
 list_filenames = glob.glob(pattern)
 # print the list of files
-print("List of files", list_filenames)
+print("List of files:", list_filenames)
 
-# get the sizes of the files
+# get the sizes of the files in hdir
 size_files = os.path.getsize(hdir)
-print("Size of Files", size_files)
+# print the size of files
+print("Size of Files:", size_files)
 
-remove_dirname = os.path.basename(hdir)
-print(list_filenames)
+files_notzero = os.path.getsize(hdir) > 0
+print(f"Files that are not zero length:", files_notzero)
+
+# Get only file names (remove directory path)
+# (file) is used to only extract the file names from the directory
+# for file in list_names loops through each file path in the list_filenames from the hdir
+# [] used to establish a list
+remove_dirname = [os.path.basename(file) for file in list_filenames]
+print("List of files (directory removed):", remove_dirname)
