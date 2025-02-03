@@ -1,5 +1,5 @@
 # os module allows us to interact with the operating system
-# use either of these to import modules
+# glob module finds all the pathnames matching a specified pattern
 # sys detects the operating system
 import os, sys, glob
 
@@ -9,7 +9,6 @@ if sys.platform == "win32":
 else:
     hdir = os.environ['HOME']
 
-# or use this if you already know your operating system
 # print home directory name
 print("Your home directory is:", hdir)
 
@@ -26,6 +25,7 @@ size_files = os.path.getsize(hdir)
 # print the size of files
 print("Size of Files:", size_files)
 
+# since the bool is greater than 0, the str is true
 files_notzero = os.path.getsize(hdir) > 0
 print(f"Files that are not zero length:", files_notzero)
 
@@ -33,5 +33,6 @@ print(f"Files that are not zero length:", files_notzero)
 # (file) is used to only extract the file names from the directory
 # for file in list_names loops through each file path in the list_filenames from the hdir
 # [] used to establish a list
+# in is a comparison, that means it has bolean values: true or false
 remove_dirname = [os.path.basename(file) for file in list_filenames]
 print("List of files (directory removed):", remove_dirname)
